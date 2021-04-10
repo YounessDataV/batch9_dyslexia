@@ -161,3 +161,9 @@ def remove_shadow(img: np.ndarray):
     result_norm = cv2.merge(result_norm_planes)
 
     return result_norm
+
+
+def binarize(image_orig: np.ndarray) -> np.ndarray:
+    image_no_shadow = remove_shadow(image_orig)
+    image_gray = image_to_gray(image_no_shadow, threshold=True)
+    return image_gray
